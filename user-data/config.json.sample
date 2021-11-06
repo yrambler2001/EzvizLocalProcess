@@ -1,0 +1,32 @@
+{
+    "appId" : "",
+    "authAddr" : "https://openauth.ys7.com",
+    "device" : [
+      {
+        "cameraNo" : 1,
+        "lastDownloadTime" : "2020-01-01 00:00:00",
+        "localDownloadFailed" : [],
+        "private" : {
+          "deviceSerial" : "",
+          "secretKey" : ""
+        },
+        "searchRange" : {
+          "end" : "2020-01-01 23:59:59",
+          "start" : "2020-01-01 00:00:00"
+        },
+      "searchStep": 259200
+      }
+    ],
+    "logLevel" : 1,
+    "openSDKlogLevel" : 1,
+    "platformAddr" : "https://open.ys7.com",
+    "private" : {
+      "accessToken" : {
+        "accessToken" : "",
+        "expireTime" : 0
+      },
+      "appKey" : "",
+      "appSecret" : ""
+    },
+    "saveDir" : "."
+}

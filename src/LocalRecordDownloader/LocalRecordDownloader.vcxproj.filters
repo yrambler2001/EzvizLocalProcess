@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ref">
+      <UniqueIdentifier>{784dfd3f-6125-404e-a854-13756cbc60d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ref\log">
+      <UniqueIdentifier>{c1ea0c2a-06ca-4e85-b6af-07add3b41417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ref\json">
+      <UniqueIdentifier>{9756f8c7-0cf3-46b4-8dde-0df91e4b2a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ref\utils">
+      <UniqueIdentifier>{1493d901-f0fa-4c9b-a82e-df3c4e9c546d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ref\cmdline">
+      <UniqueIdentifier>{67bcaaa2-d3b9-4a75-bd8b-4464e25d190e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LocalRecordDownloader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\inc\log\log.cpp">
+      <Filter>ref\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\inc\json\json_reader.cpp">
+      <Filter>ref\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\inc\json\json_value.cpp">
+      <Filter>ref\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\inc\json\json_writer.cpp">
+      <Filter>ref\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\inc\utils\utils.cpp">
+      <Filter>ref\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\inc\cmdline\cmdline.cpp">
+      <Filter>ref\cmdline</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inc\log\log.h">
+      <Filter>ref\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\allocator.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\assertions.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\config.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\forwards.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\json.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\json_features.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\json_tool.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\reader.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\value.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\version.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\json\writer.h">
+      <Filter>ref\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\utils\utils.h">
+      <Filter>ref\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\cmdline\cmdline.h">
+      <Filter>ref\cmdline</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\inc\json\json_valueiterator.inl">
+      <Filter>ref\json</Filter>
+    </None>
+  </ItemGroup>
+</Project>
