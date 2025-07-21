@@ -1,6 +1,6 @@
 ## EzvizLocalProcess
 
-Used to automatically download the videos in the memory card of the EZVIZ camera to the local computer. Based on EZVIZ's C++ OpenSDK.
+Used to automatically download the videos in the memory card of the EZVIZ camera to the local computer. Based on EZVIZ's C++ OpenSDK. https://open.ys7.com/help/en/490
 
 ### Settings
 - Rename `config.json.sample` to `config.json`
