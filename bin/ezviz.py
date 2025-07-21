@@ -27,7 +27,7 @@ def SaveConfiguration():
 
 def UpdateAccessToken(opener):
     if 'accessToken' in CONF['private'] and time.time() < CONF['private']['accessToken']['expireTime']:
-        log.debug('use cached token')
+        log.info('use cached token')
     else:
         log.info('refresh access token')
         CONF['private']['accessToken'] = {}
@@ -35,13 +35,14 @@ def UpdateAccessToken(opener):
             'appKey' : CONF['private']['appKey'],
             'appSecret' : CONF['private']['appSecret']
         }
+        print(params)
         post_data = urllib.parse.urlencode(params).encode()
         req = urllib.request.Request(
-            'https://open.ys7.com/api/lapp/token/get',
+            'https://open.ezvizlife.com/api/lapp/token/get',
             data = post_data
         )
         j = json.loads(opener.open(req).read())
-        log.debug(j)
+        log.info(j)
         if j['code'] == '200':
             CONF['private']['accessToken']['accessToken'] = j['data']['accessToken']
             CONF['private']['accessToken']['expireTime'] = j['data']['expireTime']
@@ -58,15 +59,16 @@ def GetLocalRecordList(opener, token, serial, camera, rng_from, rng_to):
         'startTime' : str(rng_from),
         'endTime' : str(rng_to)
     }
+    print(params)
     post_data = urllib.parse.urlencode(params).encode()
-    log.debug('post kv: ' + str(post_data))
+    log.info('post kv: ' + str(post_data))
     req = urllib.request.Request(
-        'https://open.ys7.com/api/lapp/video/by/time',
+        'https://open.ezvizlife.com/api/lapp/video/by/time',
         data = post_data
     )
     try:
         j = json.loads(opener.open(req).read())
-        log.debug(j)
+        log.info(j)
         if j['code'] == '200':
             return (True,j['data']) if j['data'] is not None else (True,{})
         else:
@@ -75,7 +77,7 @@ def GetLocalRecordList(opener, token, serial, camera, rng_from, rng_to):
         return False,{}
 
 def GenerateFilePathFromLocalRecord(record):
-    log.debug(record)
+    log.info(record)
     return os.path.join(
         conf.GetDownloadsDir(),
         record['deviceSerial'],
@@ -96,6 +98,7 @@ def DownloadLocalRecord(token, serial, secret_key, camera, time_start, time_end,
     for i in range(3):
         try:
             ll = [main, '-accessToken', token, '-deviceSerial', serial, '-secretKey', secret_key, '-cameraNo', str(camera), '-startTime', str(time_start), '-endTime', str(time_end), '-savePath', save_path]
+            print(ll)
             subprocess.run(ll, check=True)
             if os.path.exists(save_path):
                 log.info('record download successful')
@@ -109,14 +112,16 @@ def DownloadLocalRecord(token, serial, secret_key, camera, time_start, time_end,
 
 def TimestampToStr(ts):
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(ts))
+    # return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(ts-3600-3600))
 
 def StrToTimestamp(s):
     return int(datetime.strptime(s, '%Y-%m-%d %H:%M:%S').timestamp())
+    # return int(datetime.strptime(s, '%Y-%m-%d %H:%M:%S').timestamp())+3600+3600
 
 def main():
     try:
         log.InitLogger()
-        log.debug('************************** log start **************************')
+        log.info('************************** log start **************************')
 
         global CONF
         CONF = LoadConfiguration()
@@ -154,6 +159,7 @@ def main():
                     SaveConfiguration()
                     log.warn('download failed.')
             log.info('download end for this range')
+            break
             if end_timestamp > int(time.time()):
                 log.info('already search to current time, exit')
                 break

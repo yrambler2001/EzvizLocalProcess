@@ -109,7 +109,7 @@ bool InitSDK(const std::string& accessToken, std::string& sessionId) {
   LOG_INFO("[+] init sdk, token size: %u", accessToken.size());
 
   OPENSDK_RESULT r;
-  r = OpenSDK_InitLib("https://openauth.ys7.com", "https://open.ys7.com", "");
+  r = OpenSDK_InitLib("https://openauth.ezvizlife.com", "https://open.ezvizlife.com", "");
   if (!OpenSDK_Success(r)) {
     LOG_ERROR("[-] init lib failed, %u", r);
     return false;
@@ -153,15 +153,17 @@ bool DownloadLocalRecords(
     sessionId.c_str(), deviceSerial.c_str(), secretKey.size(), cameraNo, startTime.c_str(), endTime.c_str());
 
   // 先搜索，不然提示没录像...
-  OPENSDK_RESULT r2 = OpenSDK_StartSearchExtend(
+  OPENSDK_RESULT r2 = OpenSDK_StartSearchEx(
     sessionId.c_str(),
     deviceSerial.c_str(),
     cameraNo,
     startTime.c_str(),
-    endTime.c_str(),
-    1                   // 1 表示本地录像 2 表示云存储录像
+    endTime.c_str()
   );
   this_thread::sleep_for(2s);
+  if (!OpenSDK_Success(r2)) {
+      LOG_ERROR("[-] r2 failed, %u", r2);
+  }
 
   OPENSDK_RESULT r = OpenSDK_StartPlayBackEx(
     sessionId.c_str(),
@@ -172,6 +174,24 @@ bool DownloadLocalRecords(
     startTime.c_str(),
     endTime.c_str()
   );
+  //OPENSDK_RESULT r = OpenSDK_StartDownload(
+  //    sessionId.c_str(),
+  //    deviceSerial.c_str(),
+  //    cameraNo,
+  //    "",
+  //    startTime.c_str(),
+  //    endTime.c_str()
+  //);
+
+  //void* pBuf = NULL;
+  //int length = 0;
+  //OPENSDK_RESULT r = OpenSDK_Data_GetDevListEx(
+  //    0,
+  //    1000,
+  //    &pBuf, &length
+  //);
+  //auto json = static_cast<char*>(pBuf);
+
   if (!OpenSDK_Success(r)) {
     LOG_ERROR("[-] start donwloading local record failed, %u", r);
     return false;

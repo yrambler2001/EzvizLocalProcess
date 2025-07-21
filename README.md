@@ -1,11 +1,11 @@
 ## EzvizLocalProcess
 
-用于自动下载萤石摄像头内存卡中的录像到本地。基于萤石的 C++ OpenSDK。
+Used to automatically download the videos in the memory card of the EZVIZ camera to the local computer. Based on EZVIZ's C++ OpenSDK.
 
-### 设置
-- 重命名 `config.json.sample` 为 `config.json`
-- 登录萤石开放平台，然后到“我的账号”-“应用信息”里创建应用，将获取到的 `AppKey` 和 `Secret` 填入配置 `private` 下的 `appKey` 和 `appSecret` 里
-- 分别填入摄像头的序列号和验证码到 `deviceSerial` 和 `secreyKey` 中
-- 设定搜索时间范围 `searchRange`，该范围内的视频下载完成后会继续搜索至当前时间
-- （可选）设定每次的搜索步进 `searchStep`，按秒计算，默认为 3 天
-- `python ezviz.py` 启动应用即可下载摄像头内存卡中的录像到本地
+### Settings
+- Rename `config.json.sample` to `config.json`
+- Log in to the EZVIZ Open Platform (https://ieuopen.ezviz.com/console/login.html), then go to "Account Settings" - "Appkey management", and fill the obtained `AppKey` and `Secret` into the `private.appKey` and `private.appSecret` in config.json
+- Go to "My resources" - "Equipment list", find your camera, get the serial number and fill in the camera's serial number into `device.private.deviceSerial` property
+- Set the search time range `device.searchRange`. Keep in mind that API thinks dates on the cameras are recorded in UTC, e.g. if camera has a recording 2025-05-25 19:00:00 (19:00 regardless of camera's timezone (camera's timezone is not recorded/used anywhere), it is local camera time) and PC that runs this repository is located in UTC+2, API expects the 1748199600000 timestamp, (1748199600000 timestamp equals 2025-05-25T19:00:00.000Z), so to match the 2025-05-25 19:00:00 date on camera, a 2025-05-25 21:00:00 date is expected to be configured in `device.searchRange.start`
+- `python ezviz.py` with python3 to start the application to download the videos in the camera's memory card to the local computer
+- keep the `private.accessToken.accessToken`, `device.private.secretKey` empty

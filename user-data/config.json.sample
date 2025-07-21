@@ -1,6 +1,6 @@
 {
     "appId" : "",
-    "authAddr" : "https://openauth.ys7.com",
+    "authAddr" : "https://open.ezvizlife.com",
     "device" : [
       {
         "cameraNo" : 1,
@@ -19,7 +19,7 @@
     ],
     "logLevel" : 1,
     "openSDKlogLevel" : 1,
-    "platformAddr" : "https://open.ys7.com",
+    "platformAddr" : "https://open.ezvizlife.com",
     "private" : {
       "accessToken" : {
         "accessToken" : "",
